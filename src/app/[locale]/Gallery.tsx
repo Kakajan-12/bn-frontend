@@ -29,7 +29,6 @@ const Gallery = () => {
     const [error, setError] = useState<string | null>(null);
     const [images, setImages] = useState<ImageItem[]>([]);
 
-    // Загрузка видео
     useEffect(() => {
         const fetchVideo = async () => {
             try {
@@ -49,7 +48,6 @@ const Gallery = () => {
         fetchVideo();
     }, []);
 
-    // Загрузка изображений
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -110,7 +108,6 @@ const Gallery = () => {
                 </div>
             )}
 
-            {/* Галерея */}
             <div className="w-full max-w-6xl mx-auto px-4 py-6">
                 <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4">
                     {images.map((item) => (
