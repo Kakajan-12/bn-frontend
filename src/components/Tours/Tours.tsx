@@ -7,6 +7,7 @@ import { PiCurrencyDollarBold } from "react-icons/pi";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { IoPersonOutline } from "react-icons/io5";
 import {Tour} from "@/types/tour"
+import {useTranslations} from "next-intl";
 
 interface ToursProps {
     tours: Tour[];
@@ -17,6 +18,7 @@ interface ToursProps {
 }
 
 const Tours: React.FC<ToursProps> = ({ tours, loading, currentPage, setCurrentPage, lang }) => {
+    const t = useTranslations("Pagination")
     const [itemsPerPage] = useState(6);
     const topRef = useRef<HTMLDivElement | null>(null);
 
@@ -108,7 +110,7 @@ const Tours: React.FC<ToursProps> = ({ tours, loading, currentPage, setCurrentPa
                                 : "border-[#A40000] text-[#A40000] hover:bg-[#A40000] hover:text-white transition"
                         }`}
                     >
-                        Prev
+                        {t('prev')}
                     </button>
 
                     <div className="flex gap-2">
@@ -136,7 +138,7 @@ const Tours: React.FC<ToursProps> = ({ tours, loading, currentPage, setCurrentPa
                                 : "border-[#A40000] text-[#A40000] hover:bg-[#A40000] hover:text-white transition"
                         }`}
                     >
-                        Next
+                        {t('next')}
                     </button>
                 </div>
             )}

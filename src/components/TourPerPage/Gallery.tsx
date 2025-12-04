@@ -20,7 +20,7 @@ interface GalleryProps {
 }
 
 const Gallery: React.FC<GalleryProps> = ({ tour }) => {
-    const t = useTranslations("Information");
+    const t = useTranslations("Tours");
     const tourId = tour.id;
 
     const [images, setImages] = useState<GalleryItem[]>([]);
@@ -59,7 +59,6 @@ const Gallery: React.FC<GalleryProps> = ({ tour }) => {
     if (!images.length) {
         return (
             <div className="flex justify-center items-center h-40 text-gray-500">
-                {t("no-images")}
             </div>
         );
     }

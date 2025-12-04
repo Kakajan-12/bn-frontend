@@ -148,7 +148,7 @@ const Blog = () =>{
                 <div className="w-full relative z-2 mx-auto px-4">
                     <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
                         <div className="flex flex-col text-start items-start rounded-xl overflow-hidden">
-                            <Link href={`/blog/${bigBlog.id}`}>
+                            <Link href={`/blog/${bigBlog.id}`} className="w-full">
                                 <Image
                                     src={bigImage}
                                     alt={bigTitle}
@@ -159,16 +159,16 @@ const Blog = () =>{
                                 />
                             </Link>
                             <div className="flex py-6 flex-col items-start gap-4 flex-1 w-full">
-                                <div>
-                                    <h2 className="text-lg sm:text-2xl font-bold">{bigTitle}</h2>
-                                    <p className="text-gray-700 text-base md:text-lg max-w-xl line-clamp-4 font-medium">
+                                <div className="w-full">
+                                    <h2 className="text-md xl:text-2xl font-bold">{bigTitle}</h2>
+                                    <p className="text-gray-700 text-sm xl:text-lg w-full line-clamp-4 font-medium">
                                         {bigText}
                                     </p>
                                 </div>
                                 <div className="flex justify-center w-full lg:justify-start">
                                     <Link
-                                        href={`/blog/${bigBlog.id}`}
-                                        className="bg-red-800 cursor-pointer mt-2 text-white text-sm font-semibold px-10 py-2 rounded-lg w-fit"
+                                        href={`/blogs/${bigBlog.id}`}
+                                        className="bg-red-800 cursor-pointer mt-2 text-white text-sm font-semibold px-10 py-2 rounded-lg w-fit uppercase"
                                     >
                                         {t('blog-button')}
                                     </Link>
@@ -199,13 +199,13 @@ const Blog = () =>{
                                         </Link>
                                         <div className="flex flex-col justify-between lg:px-5 flex-1">
                                             <div>
-                                                <h3 className="text-xl font-bold mb-2">{title}</h3>
+                                                <h3 className="text-md md:text-xl font-bold mb-2">{title}</h3>
                                                 <p className="text-sm text-gray-700 line-clamp-4 font-medium">
                                                     {text}
                                                 </p>
                                             </div>
                                             <Link
-                                                href={`/blog/${blog.id}`}
+                                                href={`/blogs/${blog.id}`}
                                                 className="bg-red-800 cursor-pointer mx-auto mt-2 text-white text-sm font-semibold px-10 py-2 rounded-lg w-fit uppercase"
                                             >
                                                 {t('blog-button')}

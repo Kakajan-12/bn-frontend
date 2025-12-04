@@ -69,7 +69,7 @@
     "old-to-new": "From old to new"
   },
   "Footer": {
-    "footer-text": "Discover the amazing world of Turkmenistan with us! We organize comfortable and safe tours to the country's main attractions—from the ancient cities of Merv and Nisa to the majestic sands of the Karakum Desert.",
+    "footer-text": "Discover the amazing world of Turkmenistan with us! We organize comfortable and safe tours to the country's main attractions — from the ancient cities of Merv and Nisa to the majestic sands of the Karakum Desert.",
     "footer-contacts": "Contacts",
     "footer-quick": "Quick links"
   },
@@ -138,5 +138,9 @@
     "subject": "Subject",
     "message": "Message",
     "send": "Send"
+  },
+  "Pagination": {
+    "next": "Next",
+    "prev": "Prev"
   }
 }

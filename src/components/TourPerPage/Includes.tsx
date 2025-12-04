@@ -78,21 +78,19 @@ const Includes: React.FC<IncludesProps> = ({ tour }) => {
                         backgroundImage: "url('/compas.webp')",
                     }}
                 >
-                    {/* Включено */}
                     <div className="flex-1">
                         <p className="text-3xl text-[#575757] font-bold mb-4 text-left lg:text-center">
                             {t("include")}
                         </p>
                         <ul className="list-disc pl-6 text-gray-700 lg:mx-20 space-y-2">
                             {includesData.map((item, idx) => (
-                                <li key={idx} className="text-xl">
+                                <div key={idx} className="text-xl">
                                     {stripHTML(item[langKey("text") as keyof IncludeExclude] as string)}
-                                </li>
+                                </div>
                             ))}
                         </ul>
                     </div>
 
-                    {/* Не включено */}
                     <div className="flex-1">
                         <p className="text-3xl text-[#575757] font-bold mb-4 text-left lg:text-center">
                             {t("exclude")}

@@ -138,5 +138,9 @@
     "subject": "Mowzuk",
     "message": "Hatyňyz",
     "send": "Ugratmak"
+  },
+  "Pagination": {
+    "next": "Öňe",
+    "prev": "Yza"
   }
 }
