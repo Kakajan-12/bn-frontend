@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { FaLinkedin, FaTelegram, FaWhatsapp, FaPhoneSquareAlt } from "react-icons/fa";
 import { GrInstagram } from "react-icons/gr";
 import { FiFacebook } from "react-icons/fi";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaXTwitter, FaTiktok  } from "react-icons/fa6";
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import { FaRegClock } from "react-icons/fa";
 
@@ -89,6 +89,7 @@ const Footer = () => {
                 whatsapp: FaWhatsapp,
                 facebook: FiFacebook,
                 twitter: FaXTwitter,
+                tiktok: FaTiktok
             };
 
             const Icon = icons[iconType];
@@ -205,7 +206,7 @@ const Footer = () => {
 
                                     <div className="flex items-center gap-3 mt-4">
                                         <FaRegClock />
-                                        <p>09:00 - 19:00</p>
+                                        <p>09:00 - 18:00</p>
                                     </div>
                                 </div>
                             </div>
