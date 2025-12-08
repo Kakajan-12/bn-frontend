@@ -1,21 +1,22 @@
 'use client';
 
-import { useRouter } from "next/navigation";
-import { useTranslations, useLocale } from "next-intl";
-import { FaRegMap } from "react-icons/fa6";
-import { MdOutlineAccessTime } from "react-icons/md";
-import { HiTranslate } from "react-icons/hi";
-import { VscTypeHierarchySub } from "react-icons/vsc";
+import {useRouter} from "next/navigation";
+import {useTranslations, useLocale} from "next-intl";
+import {FaRegMap} from "react-icons/fa6";
+import {MdOutlineAccessTime} from "react-icons/md";
+import {HiTranslate} from "react-icons/hi";
+import {VscTypeHierarchySub} from "react-icons/vsc";
 import Image from "next/image";
 
 interface Tour {
     id: number;
     image: string;
     price: number;
+
     [key: string]: any;
 }
 
-const Booking = ({ tour }: { tour: Tour }) => {
+const Booking = ({tour}: { tour: Tour }) => {
     const router = useRouter();
     const t = useTranslations('Tours');
     const lang = useLocale();
@@ -50,12 +51,12 @@ const Booking = ({ tour }: { tour: Tour }) => {
 
     return (
         <div className="pt-10 xl:pt-20"
-            style={{
-                backgroundImage: "url(/map.webp)",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "contain",
-                backgroundPosition: "center right",
-            }}
+             style={{
+                 backgroundImage: "url(/map.webp)",
+                 backgroundRepeat: "no-repeat",
+                 backgroundSize: "contain",
+                 backgroundPosition: "center right",
+             }}
         >
             <div className="container px-2 mx-auto">
                 <section className="flex flex-col-reverse lg:flex-row py-10 lg:space-x-4">
@@ -76,17 +77,20 @@ const Booking = ({ tour }: { tour: Tour }) => {
                         className="flex flex-col pt-10 w-full lg:w-1/2 space-y-6"
                     >
                         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#336B7B] mb-4">{title}</h2>
-                        <p className="ml-2 font-bold text-6xl">
-                            ${tour.price}{" "}
-                            <span className="font-normal text-lg">
-                {t("tours-price")}
-              </span>
-                        </p>
+                        {tour.price !== null && (
+                            <p className="ml-2 font-bold text-6xl">
+                                ${tour.price}{" "}
+                                <span className="font-normal text-lg">
+                                    {t("tours-price")}
+                                </span>
+                            </p>
+                        )
+                        }
 
                         <div className="w-full space-y-2">
                             <div className="bg-[#FFFCFC] py-5 px-4 rounded-xl shadow-md space-y-2">
                                 <p>
-                                    <FaRegMap color="#A40000" className="inline mr-2" />
+                                    <FaRegMap color="#A40000" className="inline mr-2"/>
                                     {destination}
                                 </p>
                                 <p>
@@ -104,7 +108,7 @@ const Booking = ({ tour }: { tour: Tour }) => {
                                     {language}
                                 </p>
                                 <p>
-                                    <VscTypeHierarchySub color="#A40000" className="inline mr-2" />
+                                    <VscTypeHierarchySub color="#A40000" className="inline mr-2"/>
                                     {type}
                                 </p>
                             </div>

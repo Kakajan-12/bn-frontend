@@ -79,10 +79,12 @@ const Tours: React.FC<ToursProps> = ({ tours, loading, currentPage, setCurrentPa
                                     />
                                     <div className="h-px w-full bg-gray-200"></div>
                                     <div className="flex flex-col items-start text-md font-medium space-y-2">
-                                        <p className="flex items-center gap-2">
-                                            <PiCurrencyDollarBold className="text-[#A40000]" />
-                                            {item.price}
-                                        </p>
+                                        {item.price !== null && (
+                                            <p className="flex items-center gap-2">
+                                                <PiCurrencyDollarBold className="text-[#A40000]" />
+                                                {item.price}
+                                            </p>
+                                        )}
                                         <p className="flex items-center gap-2">
                                             <FaRegCalendarAlt className="text-[#A40000]"/>
                                             {duration} {lang === "ru" ? "дн." : lang === "tk" ? "gün" : "days"}
