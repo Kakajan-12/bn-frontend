@@ -82,16 +82,13 @@ export default function HotelData() {
     const titleHTML = getHotelField('title');  // HTML из TipTap
     const hotelTextHTML = getHotelField('text'); // HTML из TipTap
 
-    // Функция для очистки HTML (удаляет все теги)
     const stripAllHTML = (html: string): string => {
         if (!html) return '';
         return html.replace(/<[^>]*>/g, "");
     };
 
-    // Функция для безопасного отображения HTML (оставляет только безопасные теги)
     const safeHTML = (html: string): string => {
         if (!html) return '';
-        // Удаляем опасные теги, оставляем только форматирование
         return html
             .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
             .replace(/on\w+="[^"]*"/g, '')
@@ -99,23 +96,19 @@ export default function HotelData() {
             .replace(/on\w+=\w+/g, '');
     };
 
-    // Функция для обработки текста из TipTap с выделением цен
     const formatTipTapContent = (html: string, isTitle: boolean = false) => {
         if (!html) return null;
 
         let processedHTML = safeHTML(html);
 
         if (isTitle) {
-            // Для title: просто безопасный HTML
             return processedHTML;
         } else {
-            // Для description: выделяем цены
             processedHTML = processedHTML.replace(
                 /(Standart[^<]*\$[^<]*)/gi,
                 '<div class="price-block"><strong class="text-red-800 text-lg">$1</strong></div>'
             );
 
-            // Добавляем классы к параграфам
             processedHTML = processedHTML.replace(
                 /<p>/g,
                 '<p class="mb-4 leading-relaxed text-gray-800">'
@@ -150,7 +143,6 @@ export default function HotelData() {
             <div className="container mx-auto px-4 space-y-12">
                 <div className="flex flex-col lg:flex-row justify-between items-start gap-10">
                     <div className="space-y-3">
-                        {/* Title с HTML из TipTap */}
                         <h1
                             className="text-2xl font-bold text-[#A40000]"
                             dangerouslySetInnerHTML={{
@@ -180,7 +172,6 @@ export default function HotelData() {
                     <div className="space-y-6">
                         <h2 className="text-xl font-semibold text-[#A40000]">{t('description')}</h2>
 
-                        {/* Description с HTML из TipTap */}
                         <div
                             className="hotel-description"
                             dangerouslySetInnerHTML={{
