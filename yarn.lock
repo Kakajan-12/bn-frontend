@@ -106,15 +106,15 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@next/env@15.5.4":
-  version "15.5.4"
-  resolved "https://registry.npmjs.org/@next/env/-/env-15.5.4.tgz"
-  integrity sha512-27SQhYp5QryzIT5uO8hq99C69eLQ7qkzkDPsk3N+GuS2XgOgoYEeOav7Pf8Tn4drECOVDsDg8oj+/DVy8qQL2A==
+"@next/env@16.0.7":
+  version "16.0.7"
+  resolved "https://registry.npmjs.org/@next/env/-/env-16.0.7.tgz"
+  integrity sha512-gpaNgUh5nftFKRkRQGnVi5dpcYSKGcZZkQffZ172OrG/XkrnS7UBTQ648YY+8ME92cC4IojpI2LqTC8sTDhAaw==
 
-"@next/swc-win32-x64-msvc@15.5.4":
-  version "15.5.4"
-  resolved "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-15.5.4.tgz"
-  integrity sha512-1ur2tSHZj8Px/KMAthmuI9FMp/YFusMMGoRNJaRZMOlSkgvLjzosSdQI0cJAKogdHl3qXUQKL9MGaYvKwA7DXg==
+"@next/swc-win32-x64-msvc@16.0.7":
+  version "16.0.7"
+  resolved "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-16.0.7.tgz"
+  integrity sha512-gniPjy55zp5Eg0896qSrf3yB1dw4F/3s8VK1ephdsZZ129j2n6e1WqCbE2YgcKhW9hPB9TVZENugquWJD5x0ug==
 
 "@schummar/icu-type-parser@1.21.5":
   version "1.21.5"
@@ -498,26 +498,26 @@ next-intl@^4.3.9:
     negotiator "^1.0.0"
     use-intl "^4.3.9"
 
-"next@^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0", next@15.5.4:
-  version "15.5.4"
-  resolved "https://registry.npmjs.org/next/-/next-15.5.4.tgz"
-  integrity sha512-xH4Yjhb82sFYQfY3vbkJfgSDgXvBB6a8xPs9i35k6oZJRoQRihZH+4s9Yo2qsWpzBmZ3lPXaJ2KPXLfkvW4LnA==
+"next@^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0", next@^16.0.7:
+  version "16.0.7"
+  resolved "https://registry.npmjs.org/next/-/next-16.0.7.tgz"
+  integrity sha512-3mBRJyPxT4LOxAJI6IsXeFtKfiJUbjCLgvXO02fV8Wy/lIhPvP94Fe7dGhUgHXcQy4sSuYwQNcOLhIfOm0rL0A==
   dependencies:
-    "@next/env" "15.5.4"
+    "@next/env" "16.0.7"
     "@swc/helpers" "0.5.15"
     caniuse-lite "^1.0.30001579"
     postcss "8.4.31"
     styled-jsx "5.1.6"
   optionalDependencies:
-    "@next/swc-darwin-arm64" "15.5.4"
-    "@next/swc-darwin-x64" "15.5.4"
-    "@next/swc-linux-arm64-gnu" "15.5.4"
-    "@next/swc-linux-arm64-musl" "15.5.4"
-    "@next/swc-linux-x64-gnu" "15.5.4"
-    "@next/swc-linux-x64-musl" "15.5.4"
-    "@next/swc-win32-arm64-msvc" "15.5.4"
-    "@next/swc-win32-x64-msvc" "15.5.4"
-    sharp "^0.34.3"
+    "@next/swc-darwin-arm64" "16.0.7"
+    "@next/swc-darwin-x64" "16.0.7"
+    "@next/swc-linux-arm64-gnu" "16.0.7"
+    "@next/swc-linux-arm64-musl" "16.0.7"
+    "@next/swc-linux-x64-gnu" "16.0.7"
+    "@next/swc-linux-x64-musl" "16.0.7"
+    "@next/swc-win32-arm64-msvc" "16.0.7"
+    "@next/swc-win32-x64-msvc" "16.0.7"
+    sharp "^0.34.4"
 
 picocolors@^1.0.0, picocolors@^1.1.1:
   version "1.1.1"
@@ -574,7 +574,7 @@ semver@^7.7.2:
   resolved "https://registry.npmjs.org/semver/-/semver-7.7.2.tgz"
   integrity sha512-RF0Fw+rO5AMf9MAyaRXI4AV0Ulj5lMHqVxxdSgiVbixSCXoEmmX/jk0CuJw4+3SqroYO9VoUh+HcuJivvtJemA==
 
-sharp@^0.34.3:
+sharp@^0.34.4:
   version "0.34.4"
   resolved "https://registry.npmjs.org/sharp/-/sharp-0.34.4.tgz"
   integrity sha512-FUH39xp3SBPnxWvd5iib1X8XY7J0K0X7d93sie9CJg2PO8/7gmg89Nve6OjItK53/MlAushNNxteBYfM6DEuoA==

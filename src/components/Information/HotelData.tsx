@@ -79,8 +79,8 @@ export default function HotelData() {
         return typeof value === 'string' ? value : '';
     };
 
-    const titleHTML = getHotelField('title');  // HTML из TipTap
-    const hotelTextHTML = getHotelField('text'); // HTML из TipTap
+    const titleHTML = getHotelField('title');
+    const hotelTextHTML = getHotelField('text');
 
     const stripAllHTML = (html: string): string => {
         if (!html) return '';
