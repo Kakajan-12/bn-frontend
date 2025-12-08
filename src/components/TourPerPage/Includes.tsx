@@ -60,8 +60,17 @@ const Includes: React.FC<IncludesProps> = ({ tour }) => {
     if (loading) return <div className="text-center py-10">Loading...</div>;
     if (error) return <div className="text-center text-red-500">{error}</div>;
 
-    const langKey = (key: string) =>
-        `${key}_${lang === "rus" ? "ru" : lang === "tkm" ? "tk" : "en"}`;
+    // Исправленная функция для получения правильного ключа языка
+    const getLangText = (item: IncludeExclude) => {
+        switch (lang) {
+            case 'ru':
+                return item.text_ru;
+            case 'tk':
+                return item.text_tk;
+            default:
+                return item.text_en;
+        }
+    };
 
     return (
         <div className="container mx-auto px-4">
@@ -85,7 +94,7 @@ const Includes: React.FC<IncludesProps> = ({ tour }) => {
                         <ul className="list-disc pl-6 text-gray-700 lg:mx-20 space-y-2">
                             {includesData.map((item, idx) => (
                                 <div key={idx} className="text-xl">
-                                    {stripHTML(item[langKey("text") as keyof IncludeExclude] as string)}
+                                    {stripHTML(getLangText(item))}
                                 </div>
                             ))}
                         </ul>
@@ -98,7 +107,7 @@ const Includes: React.FC<IncludesProps> = ({ tour }) => {
                         <ul className="list-disc pl-6 text-gray-700 lg:mx-20 space-y-2">
                             {excludesData.map((item, idx) => (
                                 <li key={idx} className="text-xl">
-                                    {stripHTML(item[langKey("text") as keyof IncludeExclude] as string)}
+                                    {stripHTML(getLangText(item))}
                                 </li>
                             ))}
                         </ul>

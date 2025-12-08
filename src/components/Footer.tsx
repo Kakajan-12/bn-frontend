@@ -214,16 +214,23 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-2 text-center items-center justify-center text-white pb-5">
+                <div
+                    className="flex flex-col sm:flex-row gap-2 text-center items-center justify-center text-white pb-5">
                     <p className="mb-0">All rights reserved</p>
-                    <div className="flex items-center space-x-1">
-                        <Image
-                            src="/logo.svg"
-                            alt="Hebent Tech"
-                            width={20}
-                            height={20}
-                        />
-                        <p>Hebent Tech</p>
+                    <div className="flex items-center justify-end">
+                        <p className="mr-2">Powered by</p>
+                        <Image src="/logo.svg" alt="Hebent tech"
+                               width={30}
+                               height={30}
+                               className="w-5"/>
+                        <Link
+                            href="https://hebent.tech"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm md:text-base text-white pt-[1px]"
+                        >
+                            Hebent Tech
+                        </Link>
                     </div>
                 </div>
             </div>

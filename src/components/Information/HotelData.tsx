@@ -56,6 +56,7 @@ export default function HotelData() {
                 setAssets(assetsData);
             } catch (e) {
                 setError(true);
+                console.error("Error fetching data:", e);
             } finally {
                 setLoading(false);
             }
@@ -64,14 +65,65 @@ export default function HotelData() {
         fetchData();
     }, []);
 
+    if (loading) return <div className="mt-20 py-10 text-center">Loading...</div>;
+    if (error) return <div className="mt-20 py-10 text-center text-red-500">Error loading data</div>;
+
     const hotel = hotels.find(h => h.id === id);
-    if (!hotel) return null;
+    if (!hotel) return <div className="mt-20 py-10 text-center">Hotel not found</div>;
 
     const langKey = locale === "ru" ? "ru" : locale === "tk" ? "tk" : "en";
-    const stripHTML = (text?: string) => text?.replace(/<[^>]*>/g, "") || "";
 
-    const title = stripHTML(hotel[`title_${langKey}`]);
-    const text = stripHTML(hotel[`text_${langKey}`]);
+    const getHotelField = (key: 'title' | 'text'): string => {
+        const field = `${key}_${langKey}` as keyof Hotel;
+        const value = hotel[field];
+        return typeof value === 'string' ? value : '';
+    };
+
+    const titleHTML = getHotelField('title');  // HTML из TipTap
+    const hotelTextHTML = getHotelField('text'); // HTML из TipTap
+
+    // Функция для очистки HTML (удаляет все теги)
+    const stripAllHTML = (html: string): string => {
+        if (!html) return '';
+        return html.replace(/<[^>]*>/g, "");
+    };
+
+    // Функция для безопасного отображения HTML (оставляет только безопасные теги)
+    const safeHTML = (html: string): string => {
+        if (!html) return '';
+        // Удаляем опасные теги, оставляем только форматирование
+        return html
+            .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+            .replace(/on\w+="[^"]*"/g, '')
+            .replace(/on\w+='[^']*'/g, '')
+            .replace(/on\w+=\w+/g, '');
+    };
+
+    // Функция для обработки текста из TipTap с выделением цен
+    const formatTipTapContent = (html: string, isTitle: boolean = false) => {
+        if (!html) return null;
+
+        let processedHTML = safeHTML(html);
+
+        if (isTitle) {
+            // Для title: просто безопасный HTML
+            return processedHTML;
+        } else {
+            // Для description: выделяем цены
+            processedHTML = processedHTML.replace(
+                /(Standart[^<]*\$[^<]*)/gi,
+                '<div class="price-block"><strong class="text-red-800 text-lg">$1</strong></div>'
+            );
+
+            // Добавляем классы к параграфам
+            processedHTML = processedHTML.replace(
+                /<p>/g,
+                '<p class="mb-4 leading-relaxed text-gray-800">'
+            );
+
+            return processedHTML;
+        }
+    };
 
     const iconMap = {
         fabed: FaBed,
@@ -87,21 +139,33 @@ export default function HotelData() {
 
     const hotelAssets = assets.filter(a => a.hotel_id === hotel.id);
 
+    const getAssetText = (asset: Asset): string => {
+        const field = `text_${langKey}` as keyof Asset;
+        const value = asset[field];
+        return typeof value === 'string' ? stripAllHTML(value) : '';
+    };
+
     return (
         <div className="mt-20 py-10">
             <div className="container mx-auto px-4 space-y-12">
                 <div className="flex flex-col lg:flex-row justify-between items-start gap-10">
                     <div className="space-y-3">
-                        <h1 className="text-2xl font-bold text-[#A40000]">{title}</h1>
+                        {/* Title с HTML из TipTap */}
+                        <h1
+                            className="text-2xl font-bold text-[#A40000]"
+                            dangerouslySetInnerHTML={{
+                                __html: formatTipTapContent(titleHTML, true) || ''
+                            }}
+                        />
                         <div className="flex items-center gap-2">
                             {renderStars(hotel.rating)}
                         </div>
                     </div>
 
                     <div className="grid grid-cols-2 gap-x-12 gap-y-4">
-                    {hotelAssets.map(asset => {
+                        {hotelAssets.map(asset => {
                             const Icon = iconMap[asset.icon.toLowerCase() as keyof typeof iconMap];
-                            const textAsset = stripHTML(asset[`text_${langKey}`]);
+                            const textAsset = getAssetText(asset);
                             return (
                                 <div key={asset.id} className="flex items-center gap-2">
                                     {Icon && <Icon style={{width: "25px", height: "25px"}}/>}
@@ -115,11 +179,17 @@ export default function HotelData() {
                 <div className="flex items-center justify-between gap-20">
                     <div className="space-y-6">
                         <h2 className="text-xl font-semibold text-[#A40000]">{t('description')}</h2>
-                        <p className="text-gray-800 leading-relaxed">{text}</p>
+
+                        {/* Description с HTML из TipTap */}
+                        <div
+                            className="hotel-description"
+                            dangerouslySetInnerHTML={{
+                                __html: formatTipTapContent(hotelTextHTML, false) || ''
+                            }}
+                        />
                     </div>
                 </div>
             </div>
         </div>
-
     );
 }
