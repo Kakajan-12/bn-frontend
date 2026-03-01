@@ -1,7 +1,7 @@
 'use client';
 
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation"
 import { useEffect, useRef, useState } from "react";
 import { PiCurrencyDollarBold } from "react-icons/pi";
 import { FaRegCalendarAlt } from "react-icons/fa";
