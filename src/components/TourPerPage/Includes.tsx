@@ -93,9 +93,9 @@ const Includes: React.FC<IncludesProps> = ({ tour }) => {
                         </p>
                         <ul className="list-disc pl-6 text-gray-700 lg:mx-20 space-y-2">
                             {includesData.map((item, idx) => (
-                                <div key={idx} className="text-xl">
+                                <li key={idx} className="text-xl">
                                     {stripHTML(getLangText(item))}
-                                </div>
+                                </li>
                             ))}
                         </ul>
                     </div>
