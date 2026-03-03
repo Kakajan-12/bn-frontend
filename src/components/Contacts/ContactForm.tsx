@@ -178,7 +178,7 @@ const ContactForm = () => {
                 <button
                     type="submit"
                     disabled={sending}
-                    className="bg-[#A40000] text-white font-semibold w-full py-3 rounded-lg"
+                    className="bg-[#A40000] text-white font-semibold w-full md:w-fit px-6 py-3 rounded-lg"
                 >
                     {sending ? '...' : t('send')}
                 </button>
