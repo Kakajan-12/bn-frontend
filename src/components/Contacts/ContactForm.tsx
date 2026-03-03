@@ -174,14 +174,16 @@ const ContactForm = () => {
                     </p>
                 )}
                 {error && <p className="text-red-600 text-center">{error}</p>}
+                <div className="flex justify-center">
+                    <button
+                        type="submit"
+                        disabled={sending}
+                        className="bg-[#A40000] text-white font-semibold w-full md:w-fit px-8 py-3 rounded-lg"
+                    >
+                        {sending ? '...' : t('send')}
+                    </button>
+                </div>
 
-                <button
-                    type="submit"
-                    disabled={sending}
-                    className="bg-[#A40000] text-white font-semibold w-full md:w-fit px-6 py-3 rounded-lg"
-                >
-                    {sending ? '...' : t('send')}
-                </button>
             </form>
         </div>
     );
